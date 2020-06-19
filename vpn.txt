@@ -1,0 +1,63 @@
+
+
+ VPN Types:
+   
+   #> Policy Based VPN    
+	  + Site 2 Site IPSec VPN
+	  + Hub and Spoke IPSec VPN
+	  + Remote Access IPSec VPN
+	 
+   #> Route Based VPN 
+	  + GRE
+	  + VTI (Virtual Tunnel Interface) 
+		+> Static VTI
+		+> Dynamic VTI
+
+	#> DMVPN
+	
+	#> SSL Based VPN (WebVPN)
+	
+	   -> Clientless VPN (Limited Access or Resources)
+	   -> Anyconnect VPN (Fully Access or Resources)
+	   
+_____________________________________________________________________________________
+
+   #> Policy Based VPN ( Traditional IPSec VPN)
+		
+		1. Support on ASA and Router
+		2. No Multicast
+		3. Routing Protocol like OSPF/EIGRP not pass through
+		4. Strong security and limited QoS
+   
+   #> Route Based VPN (GRE/VTI)
+   
+		1. Only on Router
+		2. Support multicast (GRE/VTI)
+		3. Routing protocol OSPF/EIGRP can pass through 
+		4. QoS fully support but GRE/VTI dont provide security
+		
+		
+______________________________________________________________________________________
+
+    # Policy Based VPN Application
+	
+		1. If we want routing protocol or multicast traffic through tunnel then this will not work.
+		2. If remote site WAN is dynamic like PPPoE/DHCP then apply dynamic crytomap on central-hub
+		3. IPSec does not support NAT traffic then config NAT exemption.
+	
+	# Route Based VPN Application
+	
+		1. If vpn network unicast.. multicast routing then GRE protocol is only option.
+		2. ASA does not support GRE. router provides. but GRE does not provide encrytion. it must conjunction with IPSec.
+		
+		
+		
+		
+__________________________________IPSec________________________________________________
+		
+	# ESP > it provides data integrity .. authentication.. and confidentiality services.. ESP used to encrypted data payload of IP packet.
+	# AH > it ensures that tampering of data has not been occured.
+	# IKE > its a mechanism for securely exchanging encrytion key and ipsec peers.
+	# DH > public key crytography protocol used to establish sessions key.
+	
+	# SPI > Security Parameter Index.
